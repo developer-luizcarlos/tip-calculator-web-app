@@ -16,3 +16,30 @@ html {
   height: 100vh;
   width: 100vw;
 }
+
+body {
+  background-color: var(--grey-200);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  row-gap: 20px;
+  font-family: var(--main-font-family);
+}
+
+.logo {
+  color: var(--green-900);
+  letter-spacing: 0.8rem;
+  text-transform: uppercase;
+}
+
+.calculator {
+  background-color: var(--white);
+  box-shadow: 0px -1px 20px 2px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  padding: 1.5rem;
+  width: min(60vw, 600px);
+  min-width: 450px;
+}
