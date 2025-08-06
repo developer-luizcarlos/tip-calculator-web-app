@@ -1,0 +1,10 @@
+:root {
+  --green-400: hsl(172, 67%, 45%);
+  --green-900: hsl(183, 100%, 15%);
+  --greey-400: hsl(184, 14%, 56%);
+  --grey-200: hsl(185, 41%, 84%);
+  --grey-50: hsl(189, 47%, 97%);
+  --grey-500: hsl(186, 14%, 43%);
+  --main-font-family: "Space Mono", monospace;
+  --white: hsl(0, 100%, 100%);
+}
