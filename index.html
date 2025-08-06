@@ -14,7 +14,22 @@
   <body>
     <h1 class="logo">spli<br />tter</h1>
     <article class="calculator">
-      <form action="#" class="calculator__form"></form>
+      <form action="#" class="calculator__form">
+        <div class="input-container">
+          <header class="input-container__header">
+            <label class="label">bill</label>
+            <span role="alert" class="error-msg">Can&apos;t be zero</span>
+          </header>
+          <div class="input-wrapper input-wrapper--bill">
+            <img
+              src="/assets/images/icon-dollar.svg"
+              alt="dollar icon"
+              class="input-wrapper__icon"
+            />
+            <input type="text" placeholder="0" class="input input--bill" />
+          </div>
+        </div>
+      </form>
       <aside class="calculator__result-info"></aside>
     </article>
   </body>
