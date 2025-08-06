@@ -1,0 +1,64 @@
+{
+  "compilerOptions": {
+    // type checking configurations
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "alwaysStrict": true,
+    "exactOptionalPropertyTypes": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitAny": true,
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": false,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "strictBindCallApply": true,
+    "strictFunctionTypes": true,
+    "strictNullChecks": true,
+    "strictPropertyInitialization": true,
+    "useUnknownInCatchVariables": true,
+
+    // Modules configurations
+    "allowArbitraryExtensions": true,
+    "allowImportingTsExtensions": true,
+    "allowUmdGlobalAccess": true,
+    "baseUrl": "./src/scripts",
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "outDir": "dist",
+    "resolveJsonModule": true,
+    "rewriteRelativeImportExtensions": true,
+    "rootDir": ".",
+
+    // Emit Configurations
+    "declaration": true,
+    "declarationDir": "dist/types",
+    "declarationMap": true,
+    // "emitDeclarationOnly": true,
+    "downlevelIteration": false,
+    // "noEmit": true,
+    "noEmitHelpers": true,
+    "noEmitOnError": true,
+
+    // JS support
+    "allowJs": true,
+    "checkJs": false,
+
+    // Editor support
+    "disableSizeLimit": true,
+
+    // Interop constraints
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "verbatimModuleSyntax": true,
+
+    // Language and enviroment
+    "listEmittedFiles": true,
+    "moduleDetection": "legacy",
+    "target": "es6",
+    "traceResolution": true,
+
+    // Completness
+    "skipLibCheck": true
+  }
+}
