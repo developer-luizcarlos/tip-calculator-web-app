@@ -109,6 +109,15 @@ body {
   outline: none;
 }
 
+.input:not(.input-wrapper .input) {
+  background-color: var(--grey-50);
+  border-radius: 3px;
+}
+
+.input:not(.input-wrapper .input):focus-within {
+  outline: 2.2px solid var(--green-400);
+}
+
 .label {
   display: block;
   color: var(--grey-500);
