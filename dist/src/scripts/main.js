@@ -6,3 +6,7 @@ function formatToCurrency(value) {
         currency: "USD",
     }).format(value);
 }
+function removeSpecialCharsFromNumericValue(value) {
+    const pattern = /[^0-9\.]/gi;
+    return parseFloat(value.replace(pattern, ""));
+}
