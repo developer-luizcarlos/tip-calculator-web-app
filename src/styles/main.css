@@ -154,6 +154,12 @@ body {
   row-gap: 10px;
 }
 
+.select-tip-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .select-tip-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
