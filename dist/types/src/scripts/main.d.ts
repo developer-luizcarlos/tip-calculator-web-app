@@ -1,3 +1,4 @@
+declare const calculatorForm: HTMLFormElement | null;
 declare const inputBill: HTMLInputElement | null;
 declare function formatToCurrency(value: number): string;
 declare function isEmptyString(value: string): boolean;

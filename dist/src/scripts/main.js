@@ -1,4 +1,5 @@
 "use strict";
+const calculatorForm = document.querySelector(".calculator__form");
 const inputBill = document.querySelector(".input--bill");
 function formatToCurrency(value) {
     return new Intl.NumberFormat("en-US", {
@@ -29,5 +30,6 @@ function updateInputValueToNumericValue(input) {
         input.value = isNaN(numericValue) ? "" : numericValue.toString();
     }
 }
+calculatorForm.addEventListener("submit", (e) => e.preventDefault());
 inputBill.addEventListener("focus", (e) => updateInputValueToNumericValue(e.target));
 inputBill.addEventListener("blur", (e) => updateInputValueToCurrency(e.target));

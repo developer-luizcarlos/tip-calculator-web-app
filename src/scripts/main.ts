@@ -1,3 +1,5 @@
+const calculatorForm =
+  document.querySelector<HTMLFormElement>(".calculator__form");
 const inputBill = document.querySelector<HTMLInputElement>(".input--bill");
 
 function formatToCurrency(value: number) {
@@ -33,6 +35,8 @@ function updateInputValueToNumericValue(input: HTMLInputElement) {
     input.value = isNaN(numericValue) ? "" : numericValue.toString();
   }
 }
+
+calculatorForm!.addEventListener("submit", (e) => e.preventDefault());
 
 inputBill!.addEventListener("focus", (e) =>
   updateInputValueToNumericValue(e.target as HTMLInputElement)
