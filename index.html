@@ -17,7 +17,7 @@
       <form action="#" class="calculator__form">
         <div class="input-container">
           <header class="input-container__header">
-            <label class="label">bill</label>
+            <label for="input-bill" class="label">bill</label>
             <span role="alert" class="error-msg">Can&apos;t be zero</span>
           </header>
           <div class="input-wrapper input-wrapper--bill">
@@ -26,12 +26,17 @@
               alt="dollar icon"
               class="input-wrapper__icon"
             />
-            <input type="text" placeholder="0" class="input input--bill" />
+            <input
+              type="text"
+              placeholder="0"
+              id="input-bill"
+              class="input input--bill"
+            />
           </div>
         </div>
         <div class="select-tip-container">
           <div class="select-tip-header">
-            <label class="label">select tip %</label>
+            <label for="input-percentage" class="label">select tip %</label>
             <span role="alert" class="error-msg">Can&apos;t be zero</span>
           </div>
           <div class="select-tip-grid">
@@ -43,13 +48,14 @@
             <input
               type="text"
               placeholder="Custom"
+              id="input-percentage"
               class="input input--percentage"
             />
           </div>
         </div>
         <div class="input-container">
           <header class="input-container__header">
-            <label class="label">number of people</label>
+            <label for="input-people" class="label">number of people</label>
             <span role="alert" class="error-msg">Can&apos;t be zero</span>
           </header>
           <div class="input-wrapper input-wrapper--people">
@@ -58,7 +64,12 @@
               alt="person icon"
               class="input-wrapper__icon"
             />
-            <input type="text" placeholder="0" class="input input--people" />
+            <input
+              type="text"
+              placeholder="0"
+              id="input-people"
+              class="input input--people"
+            />
           </div>
         </div>
       </form>
