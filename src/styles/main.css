@@ -81,6 +81,10 @@ body {
   overflow: hidden;
 }
 
+.input-wrapper .input:focus {
+  outline: none;
+}
+
 .input-wrapper:focus-within {
   outline: 2.2px solid var(--green-400);
 }
@@ -96,8 +100,9 @@ body {
 }
 
 .input {
-  background-color: transparent;
+  background-color: var(--grey-50);
   border: none;
+  border-radius: 3px;
   color: var(--green-900);
   font-family: inherit;
   font-size: 1.5rem;
@@ -109,12 +114,7 @@ body {
   outline: none;
 }
 
-.input:not(.input-wrapper .input) {
-  background-color: var(--grey-50);
-  border-radius: 3px;
-}
-
-.input:not(.input-wrapper .input):focus-within {
+.input:focus {
   outline: 2.2px solid var(--green-400);
 }
 
