@@ -1,8 +1,14 @@
+import Tip from "./classes/Tip.js";
+
+const btnsPercentage =
+  document.querySelectorAll<HTMLButtonElement>(".btn--percentage");
 const calculatorForm =
   document.querySelector<HTMLFormElement>(".calculator__form");
 const inputBill = document.querySelector<HTMLInputElement>(".input--bill");
 const inputPeople = document.querySelector(".input--people");
 const inputPercentage = document.querySelector(".input--percentage");
+
+const tip = new Tip();
 
 function formatToCurrency(value: number) {
   return new Intl.NumberFormat("en-US", {
@@ -37,6 +43,13 @@ function updateInputValueToNumericValue(input: HTMLInputElement) {
     input.value = isNaN(numericValue) ? "" : numericValue.toString();
   }
 }
+
+btnsPercentage!.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    const value = btn.getAttribute("data-value");
+    tip.setPercentage = parseFloat(value!);
+  });
+});
 
 calculatorForm!.addEventListener("submit", (e) => e.preventDefault());
 

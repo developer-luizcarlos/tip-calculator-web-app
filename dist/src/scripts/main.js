@@ -1,8 +1,10 @@
-"use strict";
+import Tip from "./classes/Tip.js";
+const btnsPercentage = document.querySelectorAll(".btn--percentage");
 const calculatorForm = document.querySelector(".calculator__form");
 const inputBill = document.querySelector(".input--bill");
 const inputPeople = document.querySelector(".input--people");
 const inputPercentage = document.querySelector(".input--percentage");
+const tip = new Tip();
 function formatToCurrency(value) {
     return new Intl.NumberFormat("en-US", {
         style: "currency",
@@ -32,6 +34,12 @@ function updateInputValueToNumericValue(input) {
         input.value = isNaN(numericValue) ? "" : numericValue.toString();
     }
 }
+btnsPercentage.forEach((btn) => {
+    btn.addEventListener("click", () => {
+        const value = btn.getAttribute("data-value");
+        tip.setPercentage = parseFloat(value);
+    });
+});
 calculatorForm.addEventListener("submit", (e) => e.preventDefault());
 inputBill.addEventListener("focus", (e) => updateInputValueToNumericValue(e.target));
 inputBill.addEventListener("blur", (e) => updateInputValueToCurrency(e.target));
