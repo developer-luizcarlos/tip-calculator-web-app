@@ -6,7 +6,8 @@ const calculatorForm =
   document.querySelector<HTMLFormElement>(".calculator__form");
 const inputBill = document.querySelector<HTMLInputElement>(".input--bill");
 const inputPeople = document.querySelector(".input--people");
-const inputPercentage = document.querySelector(".input--percentage");
+const inputPercentage =
+  document.querySelector<HTMLInputElement>(".input--percentage");
 
 const tip = new Tip();
 
@@ -67,4 +68,9 @@ inputPeople!.addEventListener("blur", (e) => {
 
 inputPercentage!.addEventListener("blur", (e) => {
   updateInputValueToNumericValue(e.target as HTMLInputElement);
+});
+
+inputPercentage!.addEventListener("input", () => {
+  const value = inputPercentage!.value;
+  tip.setPercentage = removeSpecialCharsFromNumericValue(value);
 });

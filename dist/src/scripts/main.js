@@ -49,3 +49,7 @@ inputPeople.addEventListener("blur", (e) => {
 inputPercentage.addEventListener("blur", (e) => {
     updateInputValueToNumericValue(e.target);
 });
+inputPercentage.addEventListener("input", () => {
+    const value = inputPercentage.value;
+    tip.setPercentage = removeSpecialCharsFromNumericValue(value);
+});
