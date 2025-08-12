@@ -139,14 +139,14 @@ body {
   outline: none;
 }
 
-.btn--tip {
+.btn--percentage {
   color: var(--white);
   background-color: var(--green-900);
 }
 
-.btn--tip:hover,
-.btn--tip:focus,
-.btn--tip:active {
+.btn--percentage:hover,
+.btn--percentage:focus,
+.btn--percentage:active {
   color: var(--green-900);
   background-color: var(--green-400);
 }
