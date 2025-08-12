@@ -5,7 +5,7 @@ const btnsPercentage =
 const calculatorForm =
   document.querySelector<HTMLFormElement>(".calculator__form");
 const inputBill = document.querySelector<HTMLInputElement>(".input--bill");
-const inputPeople = document.querySelector(".input--people");
+const inputPeople = document.querySelector<HTMLInputElement>(".input--people");
 const inputPercentage =
   document.querySelector<HTMLInputElement>(".input--percentage");
 
@@ -62,8 +62,18 @@ inputBill!.addEventListener("blur", (e) =>
   updateInputValueToCurrency(e.target as HTMLInputElement)
 );
 
+inputBill!.addEventListener("input", () => {
+  const value = inputBill!.value;
+  tip.setBill = removeSpecialCharsFromNumericValue(value);
+});
+
 inputPeople!.addEventListener("blur", (e) => {
   updateInputValueToNumericValue(e.target as HTMLInputElement);
+});
+
+inputPeople!.addEventListener("input", () => {
+  const value = inputPeople!.value;
+  tip.setPeople = removeSpecialCharsFromNumericValue(value);
 });
 
 inputPercentage!.addEventListener("blur", (e) => {

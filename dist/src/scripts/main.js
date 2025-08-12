@@ -43,8 +43,16 @@ btnsPercentage.forEach((btn) => {
 calculatorForm.addEventListener("submit", (e) => e.preventDefault());
 inputBill.addEventListener("focus", (e) => updateInputValueToNumericValue(e.target));
 inputBill.addEventListener("blur", (e) => updateInputValueToCurrency(e.target));
+inputBill.addEventListener("input", () => {
+    const value = inputBill.value;
+    tip.setBill = removeSpecialCharsFromNumericValue(value);
+});
 inputPeople.addEventListener("blur", (e) => {
     updateInputValueToNumericValue(e.target);
+});
+inputPeople.addEventListener("input", () => {
+    const value = inputPeople.value;
+    tip.setPeople = removeSpecialCharsFromNumericValue(value);
 });
 inputPercentage.addEventListener("blur", (e) => {
     updateInputValueToNumericValue(e.target);
