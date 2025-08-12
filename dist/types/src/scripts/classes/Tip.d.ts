@@ -1,4 +1,4 @@
-export default abstract class Tip {
+export default class Tip {
     private bill;
     private people;
     private percentage;
