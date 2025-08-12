@@ -2,6 +2,7 @@ const calculatorForm =
   document.querySelector<HTMLFormElement>(".calculator__form");
 const inputBill = document.querySelector<HTMLInputElement>(".input--bill");
 const inputPeople = document.querySelector(".input--people");
+const inputPercentage = document.querySelector(".input--percentage");
 
 function formatToCurrency(value: number) {
   return new Intl.NumberFormat("en-US", {
@@ -48,5 +49,9 @@ inputBill!.addEventListener("blur", (e) =>
 );
 
 inputPeople!.addEventListener("blur", (e) => {
+  updateInputValueToNumericValue(e.target as HTMLInputElement);
+});
+
+inputPercentage!.addEventListener("blur", (e) => {
   updateInputValueToNumericValue(e.target as HTMLInputElement);
 });
