@@ -3,6 +3,7 @@ export default class Tip {
     private people;
     private percentage;
     get getTipAmount(): number;
+    get getTipPerPerson(): number;
     get getBill(): number;
     get getPeople(): number;
     get getPercentage(): number;

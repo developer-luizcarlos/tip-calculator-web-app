@@ -9,6 +9,11 @@ export default class Tip {
             return 0;
         return this.bill * (this.percentage / 100);
     }
+    get getTipPerPerson() {
+        if (this.bill === 0 || this.people === 0)
+            return 0;
+        return this.bill / this.people;
+    }
     get getBill() {
         return this.bill;
     }
