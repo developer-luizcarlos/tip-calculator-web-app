@@ -4,7 +4,13 @@ const calculatorForm = document.querySelector(".calculator__form");
 const inputBill = document.querySelector(".input--bill");
 const inputPeople = document.querySelector(".input--people");
 const inputPercentage = document.querySelector(".input--percentage");
+const spanTipAmount = document.querySelector(".description__value--tip-amount");
+const spanTipTotalPerson = document.querySelector(".description__value--total");
 const tip = new Tip();
+function displayTipInfo() {
+    spanTipAmount.textContent = formatToCurrency(tip.getTipAmount);
+    spanTipTotalPerson.textContent = formatToCurrency(tip.getTipPerPerson);
+}
 function formatToCurrency(value) {
     return new Intl.NumberFormat("en-US", {
         style: "currency",
@@ -38,6 +44,7 @@ btnsPercentage.forEach((btn) => {
     btn.addEventListener("click", () => {
         const value = btn.getAttribute("data-value");
         tip.setPercentage = parseFloat(value);
+        displayTipInfo();
     });
 });
 calculatorForm.addEventListener("submit", (e) => e.preventDefault());
@@ -46,6 +53,7 @@ inputBill.addEventListener("blur", (e) => updateInputValueToCurrency(e.target));
 inputBill.addEventListener("input", () => {
     const value = inputBill.value;
     tip.setBill = removeSpecialCharsFromNumericValue(value);
+    displayTipInfo();
 });
 inputPeople.addEventListener("blur", (e) => {
     updateInputValueToNumericValue(e.target);
@@ -53,6 +61,7 @@ inputPeople.addEventListener("blur", (e) => {
 inputPeople.addEventListener("input", () => {
     const value = inputPeople.value;
     tip.setPeople = removeSpecialCharsFromNumericValue(value);
+    displayTipInfo();
 });
 inputPercentage.addEventListener("blur", (e) => {
     updateInputValueToNumericValue(e.target);
@@ -60,4 +69,5 @@ inputPercentage.addEventListener("blur", (e) => {
 inputPercentage.addEventListener("input", () => {
     const value = inputPercentage.value;
     tip.setPercentage = removeSpecialCharsFromNumericValue(value);
+    displayTipInfo();
 });
