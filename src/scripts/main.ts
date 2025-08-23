@@ -24,8 +24,10 @@ const tip = new Tip();
 
 // Functions
 function displayTipInfo() {
-  spanTipAmount!.textContent = formatToCurrency(tip.getTipAmount);
-  spanTipTotalPerson!.textContent = formatToCurrency(tip.getTipPerPerson);
+  if (isCalculatorFieldsValueValid()) {
+    spanTipAmount!.textContent = formatToCurrency(tip.getTipAmount);
+    spanTipTotalPerson!.textContent = formatToCurrency(tip.getTipPerPerson);
+  }
 }
 
 function formatToCurrency(value: number) {
@@ -39,7 +41,7 @@ function isBillValueValid() {
   return tip.getBill !== 0;
 }
 
-function isCalculatorAbleToReset() {
+function isCalculatorFieldsValueValid() {
   return isBillValueValid() && isPeopleValueValid() && isPercentageValueValid();
 }
 
@@ -122,7 +124,7 @@ btnsPercentage!.forEach((btn) => {
 
     toggleError(spanPercentageErrorMsg!, !isPercentageValueValid());
 
-    btnReset!.toggleAttribute("disabled", !isCalculatorAbleToReset());
+    btnReset!.toggleAttribute("disabled", !isCalculatorFieldsValueValid());
   });
 
   btn.addEventListener("focus", () =>
@@ -150,7 +152,7 @@ inputBill!.addEventListener("input", () => {
 
   toggleError(spanBillErrorMsg!, !isBillValueValid(), inputWrapperBill!);
 
-  btnReset!.toggleAttribute("disabled", !isCalculatorAbleToReset());
+  btnReset!.toggleAttribute("disabled", !isCalculatorFieldsValueValid());
 });
 
 inputPeople!.addEventListener("focus", () =>
@@ -168,7 +170,7 @@ inputPeople!.addEventListener("input", () => {
 
   toggleError(spanPeopleErrorMsg!, !isPeopleValueValid(), inputWrapperPeople!);
 
-  btnReset!.toggleAttribute("disabled", !isCalculatorAbleToReset());
+  btnReset!.toggleAttribute("disabled", !isCalculatorFieldsValueValid());
 });
 
 inputPercentage!.addEventListener("focus", () =>
@@ -186,5 +188,5 @@ inputPercentage!.addEventListener("input", () => {
 
   toggleError(spanPercentageErrorMsg!, !isPercentageValueValid());
 
-  btnReset!.toggleAttribute("disabled", !isCalculatorAbleToReset());
+  btnReset!.toggleAttribute("disabled", !isCalculatorFieldsValueValid());
 });

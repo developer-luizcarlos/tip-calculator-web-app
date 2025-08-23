@@ -18,8 +18,10 @@ const spanTipTotalPerson = document.querySelector(".description__value--total");
 const tip = new Tip();
 // Functions
 function displayTipInfo() {
-    spanTipAmount.textContent = formatToCurrency(tip.getTipAmount);
-    spanTipTotalPerson.textContent = formatToCurrency(tip.getTipPerPerson);
+    if (isCalculatorFieldsValueValid()) {
+        spanTipAmount.textContent = formatToCurrency(tip.getTipAmount);
+        spanTipTotalPerson.textContent = formatToCurrency(tip.getTipPerPerson);
+    }
 }
 function formatToCurrency(value) {
     return new Intl.NumberFormat("en-US", {
@@ -30,7 +32,7 @@ function formatToCurrency(value) {
 function isBillValueValid() {
     return tip.getBill !== 0;
 }
-function isCalculatorAbleToReset() {
+function isCalculatorFieldsValueValid() {
     return isBillValueValid() && isPeopleValueValid() && isPercentageValueValid();
 }
 function isEmptyString(value) {
@@ -92,7 +94,7 @@ btnsPercentage.forEach((btn) => {
         displayTipInfo();
         inputPercentage.value = "";
         toggleError(spanPercentageErrorMsg, !isPercentageValueValid());
-        btnReset.toggleAttribute("disabled", !isCalculatorAbleToReset());
+        btnReset.toggleAttribute("disabled", !isCalculatorFieldsValueValid());
     });
     btn.addEventListener("focus", () => toggleError(spanPercentageErrorMsg, !isPercentageValueValid()));
 });
@@ -108,7 +110,7 @@ inputBill.addEventListener("input", () => {
     tip.setBill = removeSpecialCharsFromNumericValue(value);
     displayTipInfo();
     toggleError(spanBillErrorMsg, !isBillValueValid(), inputWrapperBill);
-    btnReset.toggleAttribute("disabled", !isCalculatorAbleToReset());
+    btnReset.toggleAttribute("disabled", !isCalculatorFieldsValueValid());
 });
 inputPeople.addEventListener("focus", () => toggleError(spanPeopleErrorMsg, !isPeopleValueValid(), inputWrapperPeople));
 inputPeople.addEventListener("blur", (e) => {
@@ -119,7 +121,7 @@ inputPeople.addEventListener("input", () => {
     tip.setPeople = removeSpecialCharsFromNumericValue(value);
     displayTipInfo();
     toggleError(spanPeopleErrorMsg, !isPeopleValueValid(), inputWrapperPeople);
-    btnReset.toggleAttribute("disabled", !isCalculatorAbleToReset());
+    btnReset.toggleAttribute("disabled", !isCalculatorFieldsValueValid());
 });
 inputPercentage.addEventListener("focus", () => toggleError(spanPercentageErrorMsg, !isPercentageValueValid()));
 inputPercentage.addEventListener("blur", (e) => {
@@ -130,5 +132,5 @@ inputPercentage.addEventListener("input", () => {
     tip.setPercentage = removeSpecialCharsFromNumericValue(value);
     displayTipInfo();
     toggleError(spanPercentageErrorMsg, !isPercentageValueValid());
-    btnReset.toggleAttribute("disabled", !isCalculatorAbleToReset());
+    btnReset.toggleAttribute("disabled", !isCalculatorFieldsValueValid());
 });
