@@ -1,5 +1,7 @@
+// Imports
 import Tip from "./classes/Tip.js";
 
+// DOM Elements
 const btnsPercentage =
   document.querySelectorAll<HTMLButtonElement>(".btn--percentage");
 const calculatorForm =
@@ -16,8 +18,10 @@ const spanPercentageErrorMsg = document.querySelector(".error-msg--percentage");
 const spanTipAmount = document.querySelector(".description__value--tip-amount");
 const spanTipTotalPerson = document.querySelector(".description__value--total");
 
+// Variables
 const tip = new Tip();
 
+// Functions
 function displayTipInfo() {
   spanTipAmount!.textContent = formatToCurrency(tip.getTipAmount);
   spanTipTotalPerson!.textContent = formatToCurrency(tip.getTipPerPerson);
@@ -51,6 +55,24 @@ function removeSpecialCharsFromNumericValue(value: string) {
   return parseFloat(value.replace(pattern, ""));
 }
 
+function resetCalculator() {
+  tip.setBill = 0;
+  tip.setPeople = 0;
+  tip.setPercentage = 0;
+
+  inputBill!.value = "";
+  inputPeople!.value = "";
+  inputPercentage!.value = "";
+
+  inputBill!.classList.remove("input-wrapper--error");
+  inputPeople!.classList.remove("input-wrapper--error");
+  inputPercentage!.classList.remove("input-wrapper--error");
+
+  spanBillErrorMsg!.classList.remove("error-msg--visible");
+  spanPeopleErrorMsg!.classList.remove("error-msg--visible");
+  spanPercentageErrorMsg!.classList.remove("error-msg--visible");
+}
+
 function toggleError(
   errorSpan: Element,
   condition: boolean,
@@ -80,6 +102,9 @@ function updateInputValueToNumericValue(input: HTMLInputElement) {
     input.value = isNaN(numericValue) ? "" : numericValue.toString();
   }
 }
+
+// Functions/Events Applied
+document.addEventListener("DOMContentLoaded", resetCalculator);
 
 btnsPercentage!.forEach((btn) => {
   btn.addEventListener("click", () => {
