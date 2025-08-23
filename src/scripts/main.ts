@@ -86,6 +86,7 @@ btnsPercentage!.forEach((btn) => {
     const value = btn.getAttribute("data-value");
     tip.setPercentage = parseFloat(value!);
     displayTipInfo();
+    inputPercentage!.value = "";
 
     toggleError(spanPercentageErrorMsg!, !isPercentageValueValid());
   });
