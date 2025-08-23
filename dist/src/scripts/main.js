@@ -2,6 +2,7 @@
 import Tip from "./classes/Tip.js";
 // DOM Elements
 const btnsPercentage = document.querySelectorAll(".btn--percentage");
+const btnReset = document.querySelector(".btn--reset");
 const calculatorForm = document.querySelector(".calculator__form");
 const inputBill = document.querySelector(".input--bill");
 const inputPeople = document.querySelector(".input--people");
@@ -29,6 +30,9 @@ function formatToCurrency(value) {
 function isBillValueValid() {
     return tip.getBill !== 0;
 }
+function isCalculatorAbleToReset() {
+    return isBillValueValid() && isPeopleValueValid() && isPercentageValueValid();
+}
 function isEmptyString(value) {
     return value.trim() === "";
 }
@@ -46,12 +50,13 @@ function resetCalculator() {
     tip.setBill = 0;
     tip.setPeople = 0;
     tip.setPercentage = 0;
+    spanTipAmount.textContent = `${formatToCurrency(0)}`;
+    spanTipTotalPerson.textContent = `${formatToCurrency(0)}`;
     inputBill.value = "";
     inputPeople.value = "";
     inputPercentage.value = "";
-    inputBill.classList.remove("input-wrapper--error");
-    inputPeople.classList.remove("input-wrapper--error");
-    inputPercentage.classList.remove("input-wrapper--error");
+    inputWrapperBill.classList.remove("input-wrapper--error");
+    inputWrapperPeople.classList.remove("input-wrapper--error");
     spanBillErrorMsg.classList.remove("error-msg--visible");
     spanPeopleErrorMsg.classList.remove("error-msg--visible");
     spanPercentageErrorMsg.classList.remove("error-msg--visible");
@@ -87,9 +92,11 @@ btnsPercentage.forEach((btn) => {
         displayTipInfo();
         inputPercentage.value = "";
         toggleError(spanPercentageErrorMsg, !isPercentageValueValid());
+        btnReset.toggleAttribute("disabled", !isCalculatorAbleToReset());
     });
     btn.addEventListener("focus", () => toggleError(spanPercentageErrorMsg, !isPercentageValueValid()));
 });
+btnReset.addEventListener("click", resetCalculator);
 calculatorForm.addEventListener("submit", (e) => e.preventDefault());
 inputBill.addEventListener("focus", (e) => {
     updateInputValueToNumericValue(e.target);
@@ -101,6 +108,7 @@ inputBill.addEventListener("input", () => {
     tip.setBill = removeSpecialCharsFromNumericValue(value);
     displayTipInfo();
     toggleError(spanBillErrorMsg, !isBillValueValid(), inputWrapperBill);
+    btnReset.toggleAttribute("disabled", !isCalculatorAbleToReset());
 });
 inputPeople.addEventListener("focus", () => toggleError(spanPeopleErrorMsg, !isPeopleValueValid(), inputWrapperPeople));
 inputPeople.addEventListener("blur", (e) => {
@@ -111,6 +119,7 @@ inputPeople.addEventListener("input", () => {
     tip.setPeople = removeSpecialCharsFromNumericValue(value);
     displayTipInfo();
     toggleError(spanPeopleErrorMsg, !isPeopleValueValid(), inputWrapperPeople);
+    btnReset.toggleAttribute("disabled", !isCalculatorAbleToReset());
 });
 inputPercentage.addEventListener("focus", () => toggleError(spanPercentageErrorMsg, !isPercentageValueValid()));
 inputPercentage.addEventListener("blur", (e) => {
@@ -121,4 +130,5 @@ inputPercentage.addEventListener("input", () => {
     tip.setPercentage = removeSpecialCharsFromNumericValue(value);
     displayTipInfo();
     toggleError(spanPercentageErrorMsg, !isPercentageValueValid());
+    btnReset.toggleAttribute("disabled", !isCalculatorAbleToReset());
 });

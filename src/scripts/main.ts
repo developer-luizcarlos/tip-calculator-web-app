@@ -4,6 +4,7 @@ import Tip from "./classes/Tip.js";
 // DOM Elements
 const btnsPercentage =
   document.querySelectorAll<HTMLButtonElement>(".btn--percentage");
+const btnReset = document.querySelector<HTMLButtonElement>(".btn--reset");
 const calculatorForm =
   document.querySelector<HTMLFormElement>(".calculator__form");
 const inputBill = document.querySelector<HTMLInputElement>(".input--bill");
@@ -38,6 +39,10 @@ function isBillValueValid() {
   return tip.getBill !== 0;
 }
 
+function isCalculatorAbleToReset() {
+  return isBillValueValid() && isPeopleValueValid() && isPercentageValueValid();
+}
+
 function isEmptyString(value: string) {
   return value.trim() === "";
 }
@@ -60,13 +65,15 @@ function resetCalculator() {
   tip.setPeople = 0;
   tip.setPercentage = 0;
 
+  spanTipAmount!.textContent = `${formatToCurrency(0)}`;
+  spanTipTotalPerson!.textContent = `${formatToCurrency(0)}`;
+
   inputBill!.value = "";
   inputPeople!.value = "";
   inputPercentage!.value = "";
 
-  inputBill!.classList.remove("input-wrapper--error");
-  inputPeople!.classList.remove("input-wrapper--error");
-  inputPercentage!.classList.remove("input-wrapper--error");
+  inputWrapperBill!.classList.remove("input-wrapper--error");
+  inputWrapperPeople!.classList.remove("input-wrapper--error");
 
   spanBillErrorMsg!.classList.remove("error-msg--visible");
   spanPeopleErrorMsg!.classList.remove("error-msg--visible");
@@ -114,12 +121,16 @@ btnsPercentage!.forEach((btn) => {
     inputPercentage!.value = "";
 
     toggleError(spanPercentageErrorMsg!, !isPercentageValueValid());
+
+    btnReset!.toggleAttribute("disabled", !isCalculatorAbleToReset());
   });
 
   btn.addEventListener("focus", () =>
     toggleError(spanPercentageErrorMsg!, !isPercentageValueValid())
   );
 });
+
+btnReset!.addEventListener("click", resetCalculator);
 
 calculatorForm!.addEventListener("submit", (e) => e.preventDefault());
 
@@ -138,6 +149,8 @@ inputBill!.addEventListener("input", () => {
   displayTipInfo();
 
   toggleError(spanBillErrorMsg!, !isBillValueValid(), inputWrapperBill!);
+
+  btnReset!.toggleAttribute("disabled", !isCalculatorAbleToReset());
 });
 
 inputPeople!.addEventListener("focus", () =>
@@ -154,6 +167,8 @@ inputPeople!.addEventListener("input", () => {
   displayTipInfo();
 
   toggleError(spanPeopleErrorMsg!, !isPeopleValueValid(), inputWrapperPeople!);
+
+  btnReset!.toggleAttribute("disabled", !isCalculatorAbleToReset());
 });
 
 inputPercentage!.addEventListener("focus", () =>
@@ -170,4 +185,6 @@ inputPercentage!.addEventListener("input", () => {
   displayTipInfo();
 
   toggleError(spanPercentageErrorMsg!, !isPercentageValueValid());
+
+  btnReset!.toggleAttribute("disabled", !isCalculatorAbleToReset());
 });
