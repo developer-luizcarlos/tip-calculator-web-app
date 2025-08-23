@@ -96,7 +96,10 @@ btnsPercentage.forEach((btn) => {
         toggleError(spanPercentageErrorMsg, !isPercentageValueValid());
         btnReset.toggleAttribute("disabled", !isCalculatorFieldsValueValid());
     });
-    btn.addEventListener("focus", () => toggleError(spanPercentageErrorMsg, !isPercentageValueValid()));
+    btn.addEventListener("focus", () => {
+        toggleError(spanPercentageErrorMsg, !isPercentageValueValid());
+        btnReset.toggleAttribute("disabled", !isCalculatorFieldsValueValid());
+    });
 });
 btnReset.addEventListener("click", resetCalculator);
 calculatorForm.addEventListener("submit", (e) => e.preventDefault());
@@ -112,7 +115,10 @@ inputBill.addEventListener("input", () => {
     toggleError(spanBillErrorMsg, !isBillValueValid(), inputWrapperBill);
     btnReset.toggleAttribute("disabled", !isCalculatorFieldsValueValid());
 });
-inputPeople.addEventListener("focus", () => toggleError(spanPeopleErrorMsg, !isPeopleValueValid(), inputWrapperPeople));
+inputPeople.addEventListener("focus", () => {
+    toggleError(spanPeopleErrorMsg, !isPeopleValueValid(), inputWrapperPeople);
+    btnReset.toggleAttribute("disabled", !isCalculatorFieldsValueValid());
+});
 inputPeople.addEventListener("blur", (e) => {
     updateInputValueToNumericValue(e.target);
 });
@@ -123,7 +129,10 @@ inputPeople.addEventListener("input", () => {
     toggleError(spanPeopleErrorMsg, !isPeopleValueValid(), inputWrapperPeople);
     btnReset.toggleAttribute("disabled", !isCalculatorFieldsValueValid());
 });
-inputPercentage.addEventListener("focus", () => toggleError(spanPercentageErrorMsg, !isPercentageValueValid()));
+inputPercentage.addEventListener("focus", () => {
+    toggleError(spanPercentageErrorMsg, !isPercentageValueValid());
+    btnReset.toggleAttribute("disabled", !isCalculatorFieldsValueValid());
+});
 inputPercentage.addEventListener("blur", (e) => {
     updateInputValueToNumericValue(e.target);
 });

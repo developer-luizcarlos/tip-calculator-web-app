@@ -127,9 +127,10 @@ btnsPercentage!.forEach((btn) => {
     btnReset!.toggleAttribute("disabled", !isCalculatorFieldsValueValid());
   });
 
-  btn.addEventListener("focus", () =>
-    toggleError(spanPercentageErrorMsg!, !isPercentageValueValid())
-  );
+  btn.addEventListener("focus", () => {
+    toggleError(spanPercentageErrorMsg!, !isPercentageValueValid());
+    btnReset!.toggleAttribute("disabled", !isCalculatorFieldsValueValid());
+  });
 });
 
 btnReset!.addEventListener("click", resetCalculator);
@@ -155,9 +156,10 @@ inputBill!.addEventListener("input", () => {
   btnReset!.toggleAttribute("disabled", !isCalculatorFieldsValueValid());
 });
 
-inputPeople!.addEventListener("focus", () =>
-  toggleError(spanPeopleErrorMsg!, !isPeopleValueValid(), inputWrapperPeople!)
-);
+inputPeople!.addEventListener("focus", () => {
+  toggleError(spanPeopleErrorMsg!, !isPeopleValueValid(), inputWrapperPeople!);
+  btnReset!.toggleAttribute("disabled", !isCalculatorFieldsValueValid());
+});
 
 inputPeople!.addEventListener("blur", (e) => {
   updateInputValueToNumericValue(e.target as HTMLInputElement);
@@ -173,9 +175,10 @@ inputPeople!.addEventListener("input", () => {
   btnReset!.toggleAttribute("disabled", !isCalculatorFieldsValueValid());
 });
 
-inputPercentage!.addEventListener("focus", () =>
-  toggleError(spanPercentageErrorMsg!, !isPercentageValueValid())
-);
+inputPercentage!.addEventListener("focus", () => {
+  toggleError(spanPercentageErrorMsg!, !isPercentageValueValid());
+  btnReset!.toggleAttribute("disabled", !isCalculatorFieldsValueValid());
+});
 
 inputPercentage!.addEventListener("blur", (e) => {
   updateInputValueToNumericValue(e.target as HTMLInputElement);
