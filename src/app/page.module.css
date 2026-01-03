@@ -17,7 +17,7 @@ body {
 	border-radius: 15px;
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
-	column-gap: 50px;
+	gap: 35px;
 	width: clamp(350px, 80vw, 1000px);
 	padding: 2rem;
 }
@@ -61,7 +61,7 @@ body {
 	align-items: center;
 	justify-content: center;
 	font-family: inherit;
-	font-size: clamp(1rem, 1.8vw, 1.5rem);
+	font-size: clamp(1.2rem, 1.8vw, 1.5rem);
 	font-weight: bold;
 	padding: 0.7rem;
 }
@@ -88,4 +88,53 @@ body {
 	flex-direction: column;
 	justify-content: space-between;
 	padding: 2rem;
+}
+
+@media only screen and (prefers-reduced-motion: no-preference) {
+	body {
+		transition: all 0.3s cubic-bezier(0.17, 0.84, 0.44, 1);
+	}
+
+	.btn {
+		transition: background-color 0.3s cubic-bezier(0.17, 0.84, 0.44, 1);
+	}
+}
+
+@media only screen and (hover: hover) {
+	.btnTip:hover {
+		background-color: hsl(185, 41%, 84%);
+		color: hsl(183, 100%, 15%);
+	}
+
+	.btnReset:hover {
+		background-color: hsl(185, 41%, 84%);
+		color: hsl(183, 100%, 15%);
+	}
+}
+
+@media only screen and (width <= 890px) {
+	body {
+		justify-content: flex-start;
+		gap: 35px;
+		padding-top: 2rem;
+	}
+
+	.calculator {
+		grid-template-columns: 1fr;
+	}
+
+	.btnSelectTipContainer {
+		grid-template-columns: repeat(2, 1fr);
+		grid-template-rows: repeat(3, 1fr);
+	}
+
+	.dashboard {
+		gap: 30px;
+	}
+}
+
+@media only screen and (width <= 500px) {
+	.calculator {
+		width: 100%;
+	}
 }
