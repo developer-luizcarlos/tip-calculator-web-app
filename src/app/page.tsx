@@ -26,8 +26,6 @@ const Home: React.FC = () => {
 	const [inputPeople, setInputPeople] = useState("");
 
 	const [isInputBillInvalid, setIsInputBillInvalid] = useState(false);
-	const [isInputPercentageInvalid, setIsInputPercentageInvalid] =
-		useState(false);
 	const [isInputPeopleInvalid, setIsInputPeopleInvalid] = useState(false);
 	const [isPercentageInvalid, setIsPercentageInvalid] = useState(false);
 
@@ -116,8 +114,6 @@ const Home: React.FC = () => {
 
 		setInputPercentage(value);
 
-		setIsInputPercentageInvalid(invalidConditions);
-
 		setIsPercentageInvalid(invalidConditions);
 
 		setPercentage(() => {
@@ -151,6 +147,14 @@ const Home: React.FC = () => {
 
 			return +value;
 		});
+	};
+
+	const handleBtnPercentageClick = (value: number): void => {
+		setPercentage(value);
+
+		setIsPercentageInvalid(false);
+
+		setInputPercentage("");
 	};
 
 	return (
@@ -204,23 +208,38 @@ const Home: React.FC = () => {
 							/>
 						</header>
 						<div className={`${styles.btnSelectTipContainer}`}>
-							<button className={`${styles.btn} ${styles.btnPercentage}`}>
+							<button
+								className={`${styles.btn} ${styles.btnPercentage} ${percentage === 5 && styles.btnSelected}`}
+								onClick={() => handleBtnPercentageClick(5)}
+							>
 								5%
 							</button>
-							<button className={`${styles.btn} ${styles.btnPercentage}`}>
+							<button
+								className={`${styles.btn} ${styles.btnPercentage} ${percentage === 10 && styles.btnSelected}`}
+								onClick={() => handleBtnPercentageClick(10)}
+							>
 								10%
 							</button>
-							<button className={`${styles.btn} ${styles.btnPercentage}`}>
+							<button
+								className={`${styles.btn} ${styles.btnPercentage} ${percentage === 15 && styles.btnSelected}`}
+								onClick={() => handleBtnPercentageClick(15)}
+							>
 								15%
 							</button>
-							<button className={`${styles.btn} ${styles.btnPercentage}`}>
+							<button
+								className={`${styles.btn} ${styles.btnPercentage} ${percentage === 25 && styles.btnSelected}`}
+								onClick={() => handleBtnPercentageClick(25)}
+							>
 								25%
 							</button>
-							<button className={`${styles.btn} ${styles.btnPercentage}`}>
+							<button
+								className={`${styles.btn} ${styles.btnPercentage} ${percentage === 50 && styles.btnSelected}`}
+								onClick={() => handleBtnPercentageClick(50)}
+							>
 								50%
 							</button>
 							<Input
-								hasError={isInputPercentageInvalid}
+								hasError={isPercentageInvalid}
 								id="percentage-input"
 								maxLength={3}
 								placeholder="0"
