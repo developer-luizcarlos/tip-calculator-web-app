@@ -1,5 +1,13 @@
 import type {Metadata} from "next";
+import {Space_Mono} from "next/font/google";
 import "./globals.css";
+
+const spaceMono = Space_Mono({
+	display: "swap",
+	subsets: ["latin"],
+	style: ["normal", "italic"],
+	weight: ["400", "700"],
+});
 
 export const metadata: Metadata = {
 	title: "Tip Calculator",
@@ -13,7 +21,7 @@ const RootLayout = ({
 }>) => {
 	return (
 		<html lang="en-US">
-			<body>{children}</body>
+			<body className={`${spaceMono.className}`}>{children}</body>
 		</html>
 	);
 };
