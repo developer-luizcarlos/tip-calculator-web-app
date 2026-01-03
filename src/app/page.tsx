@@ -18,18 +18,22 @@ const Home: React.FC = () => {
 	// Constants
 	const MAX_BILL_VALUE = 10000;
 	const MAX_PERCENTAGE_VALUE = 100;
+	const MAX_PEOPLE_VALUE = 15;
 
 	// States
 	const [inputBill, setInputBill] = useState("");
 	const [inputPercentage, setInputPercentage] = useState("");
+	const [inputPeople, setInputPeople] = useState("");
 
 	const [isInputBillInvalid, setIsInputBillInvalid] = useState(false);
 	const [isInputPercentageInvalid, setIsInputPercentageInvalid] =
 		useState(false);
+	const [isInputPeopleInvalid, setIsInputPeopleInvalid] = useState(false);
 	const [isPercentageInvalid, setIsPercentageInvalid] = useState(false);
 
 	const [bill, setBill] = useState<number | null>(null);
 	const [percentage, setPercentage] = useState<number | null>(null);
+	const [people, setPeople] = useState<number | null>(null);
 
 	// Memoized values
 	const inputBillInlineErrorMsg = useMemo(() => {
@@ -59,6 +63,20 @@ const Home: React.FC = () => {
 
 		return "Cannot be zero";
 	}, [isPercentageInvalid, inputPercentage]);
+
+	const peopleInlineErrorMsg = useMemo(() => {
+		if (!isInputPeopleInvalid) return "";
+
+		if (!/^[0-9]+$/.test(inputPeople)) {
+			return "Wrong format";
+		}
+
+		if (+inputPeople > MAX_PEOPLE_VALUE) {
+			return `Cannot be greater than ${MAX_PEOPLE_VALUE}`;
+		}
+
+		return "Cannot be zero";
+	}, [isInputPeopleInvalid, inputPeople]);
 
 	// Handlers
 	const handleInputBillChange = (
@@ -103,6 +121,30 @@ const Home: React.FC = () => {
 		setIsPercentageInvalid(invalidConditions);
 
 		setPercentage(() => {
+			if (invalidConditions) {
+				return null;
+			}
+
+			return +value;
+		});
+	};
+
+	const handleInputPeopleChange = (
+		event: ChangeEvent<HTMLInputElement>,
+	): void => {
+		const value = event.target.value;
+
+		const invalidConditions =
+			isEmptyString(value) ||
+			!/^[0-9]+$/.test(value) ||
+			+value <= 0 ||
+			+value > MAX_PEOPLE_VALUE;
+
+		setInputPeople(value);
+
+		setIsInputPeopleInvalid(invalidConditions);
+
+		setPeople(() => {
 			if (invalidConditions) {
 				return null;
 			}
@@ -192,13 +234,18 @@ const Home: React.FC = () => {
 							<label htmlFor="people-input" className={`${styles.label}`}>
 								Number of People
 							</label>
-							<InlineError isShown={false} label="Can't be zero" />
+							<InlineError
+								isShown={isInputPeopleInvalid}
+								label={peopleInlineErrorMsg}
+							/>
 						</header>
 						<Input
-							hasError={false}
+							hasError={isInputPeopleInvalid}
 							iconPath="/images/icon-person.svg"
 							id="people-input"
+							value={inputPeople}
 							placeholder="0"
+							onChange={handleInputPeopleChange}
 						/>
 					</div>
 				</form>
