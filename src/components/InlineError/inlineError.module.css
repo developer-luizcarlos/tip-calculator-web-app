@@ -1,0 +1,4 @@
+.inlineError {
+	color: red;
+	font-size: clamp(12px, 1vw, 0.95rem);
+}
