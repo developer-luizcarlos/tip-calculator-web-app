@@ -66,12 +66,12 @@ body {
 	padding: 0.7rem;
 }
 
-.btnTip {
+.btnPercentage {
 	background-color: hsl(183, 100%, 15%);
 	color: hsl(0, 100%, 100%);
 }
 
-.btnTip.btnSelected {
+.btnPercentage.btnSelected {
 	background-color: hsl(172, 67%, 45%);
 	color: hsl(183, 100%, 15%);
 }
@@ -101,13 +101,13 @@ body {
 }
 
 @media only screen and (hover: hover) {
-	.btnTip:focus {
+	.btnPercentage:focus {
 		background-color: hsl(185, 41%, 84%);
 		color: hsl(183, 100%, 15%);
 		outline: none;
 	}
 
-	.btnTip:hover {
+	.btnPercentage:hover {
 		background-color: hsl(185, 41%, 84%);
 		color: hsl(183, 100%, 15%);
 	}

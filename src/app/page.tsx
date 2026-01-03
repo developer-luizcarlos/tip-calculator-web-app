@@ -204,19 +204,19 @@ const Home: React.FC = () => {
 							/>
 						</header>
 						<div className={`${styles.btnSelectTipContainer}`}>
-							<button className={`${styles.btn} ${styles.btnTip}`}>
+							<button className={`${styles.btn} ${styles.btnPercentage}`}>
 								5%
 							</button>
-							<button className={`${styles.btn} ${styles.btnTip}`}>
+							<button className={`${styles.btn} ${styles.btnPercentage}`}>
 								10%
 							</button>
-							<button className={`${styles.btn} ${styles.btnTip}`}>
+							<button className={`${styles.btn} ${styles.btnPercentage}`}>
 								15%
 							</button>
-							<button className={`${styles.btn} ${styles.btnTip}`}>
+							<button className={`${styles.btn} ${styles.btnPercentage}`}>
 								25%
 							</button>
-							<button className={`${styles.btn} ${styles.btnTip}`}>
+							<button className={`${styles.btn} ${styles.btnPercentage}`}>
 								50%
 							</button>
 							<Input
