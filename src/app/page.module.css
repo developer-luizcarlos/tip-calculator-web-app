@@ -1,0 +1,91 @@
+body {
+	background-color: hsl(185, 41%, 84%);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	row-gap: 50px;
+}
+
+.logo {
+	height: auto;
+	width: auto;
+}
+
+.calculator {
+	background-color: hsl(0, 100%, 100%);
+	border-radius: 15px;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	column-gap: 50px;
+	width: clamp(350px, 80vw, 1000px);
+	padding: 2rem;
+}
+
+.form {
+	display: grid;
+	row-gap: 35px;
+}
+
+.formField {
+	display: flex;
+	flex-direction: column;
+	row-gap: 5px;
+}
+
+.formFieldHeader {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.label {
+	color: hsl(183, 100%, 15%);
+	font-size: clamp(1rem, 1.2vw, 1.3rem);
+	font-weight: bold;
+}
+
+.btnSelectTipContainer {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-rows: repeat(2, 1fr);
+	align-items: center;
+	gap: 10px;
+}
+
+.btn {
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-family: inherit;
+	font-size: clamp(1rem, 1.8vw, 1.5rem);
+	font-weight: bold;
+	padding: 0.7rem;
+}
+
+.btnTip {
+	background-color: hsl(183, 100%, 15%);
+	color: hsl(0, 100%, 100%);
+}
+
+.btnTip.btnSelected {
+	background-color: hsl(172, 67%, 45%);
+	color: hsl(183, 100%, 15%);
+}
+
+.btnReset {
+	background-color: hsl(172, 67%, 45%);
+	color: hsl(183, 100%, 15%);
+}
+
+.dashboard {
+	background-color: hsl(183, 100%, 15%);
+	border-radius: 10px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	padding: 2rem;
+}
