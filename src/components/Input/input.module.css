@@ -4,9 +4,6 @@
 	display: flex;
 	align-items: center;
 	column-gap: 10px;
-	height: 50px;
-	height: 3.5vw;
-	height: 40px;
 	height: clamp(40px, 3.5vw, 50px);
 	padding-inline: 10px;
 }
@@ -33,6 +30,7 @@
 	width: 100%;
 	color: hsl(183, 100%, 15%);
 	text-align: right;
+	font-family: inherit;
 	font-size: clamp(1.2rem, 2vw, 2.5rem);
 	font-weight: bold;
 	padding-inline: 5px;
