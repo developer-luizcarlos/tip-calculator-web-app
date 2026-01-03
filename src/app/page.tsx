@@ -9,20 +9,27 @@ import Input from "@/components/Input/Input";
 import Result from "@/components/Result/Result";
 
 import {isEmptyString} from "@/helpers/isEmptyString";
+import {isValidPercentageFormat} from "@/helpers/isValidPercentageFormat";
 import {isValidValue} from "@/helpers/isValidValue";
 
-import {ChangeEvent, useMemo, useState} from "react";
+import {ChangeEvent, useEffect, useMemo, useState} from "react";
 
 const Home: React.FC = () => {
 	// Constants
 	const MAX_BILL_VALUE = 10000;
+	const MAX_PERCENTAGE_VALUE = 100;
 
 	// States
 	const [inputBill, setInputBill] = useState("");
+	const [inputPercentage, setInputPercentage] = useState("");
 
 	const [isInputBillInvalid, setIsInputBillInvalid] = useState(false);
+	const [isInputPercentageInvalid, setIsInputPercentageInvalid] =
+		useState(false);
+	const [isPercentageInvalid, setIsPercentageInvalid] = useState(false);
 
 	const [bill, setBill] = useState<number | null>(null);
+	const [percentage, setPercentage] = useState<number | null>(null);
 
 	// Memoized values
 	const inputBillInlineErrorMsg = useMemo(() => {
@@ -38,6 +45,20 @@ const Home: React.FC = () => {
 
 		return "Cannot be zero";
 	}, [isInputBillInvalid, inputBill]);
+
+	const percentageInlineErrorMsg = useMemo(() => {
+		if (!isPercentageInvalid) return "";
+
+		if (!isValidPercentageFormat(inputPercentage)) {
+			return "Wrong format";
+		}
+
+		if (+inputPercentage > MAX_PERCENTAGE_VALUE) {
+			return `Cannot be greater than ${MAX_PERCENTAGE_VALUE}`;
+		}
+
+		return "Cannot be zero";
+	}, [isPercentageInvalid, inputPercentage]);
 
 	// Handlers
 	const handleInputBillChange = (
@@ -56,6 +77,32 @@ const Home: React.FC = () => {
 		setIsInputBillInvalid(invalidConditions);
 
 		setBill(() => {
+			if (invalidConditions) {
+				return null;
+			}
+
+			return +value;
+		});
+	};
+
+	const handleInputPercentageChange = (
+		event: ChangeEvent<HTMLInputElement>,
+	): void => {
+		const value = event.target.value;
+
+		const invalidConditions =
+			isEmptyString(value) ||
+			!isValidPercentageFormat(value) ||
+			+value <= 0 ||
+			+value > MAX_PERCENTAGE_VALUE;
+
+		setInputPercentage(value);
+
+		setIsInputPercentageInvalid(invalidConditions);
+
+		setIsPercentageInvalid(invalidConditions);
+
+		setPercentage(() => {
 			if (invalidConditions) {
 				return null;
 			}
@@ -109,7 +156,10 @@ const Home: React.FC = () => {
 							>
 								Select Tip %
 							</label>
-							<InlineError isShown={false} label="Can't be zero" />
+							<InlineError
+								isShown={isPercentageInvalid}
+								label={percentageInlineErrorMsg}
+							/>
 						</header>
 						<div className={`${styles.btnSelectTipContainer}`}>
 							<button className={`${styles.btn} ${styles.btnTip}`}>
@@ -128,9 +178,12 @@ const Home: React.FC = () => {
 								50%
 							</button>
 							<Input
-								hasError={false}
+								hasError={isInputPercentageInvalid}
 								id="percentage-input"
+								maxLength={3}
 								placeholder="0"
+								value={inputPercentage}
+								onChange={handleInputPercentageChange}
 							/>
 						</div>
 					</div>
