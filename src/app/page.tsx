@@ -8,7 +8,62 @@ import InlineError from "@/components/InlineError/InlineError";
 import Input from "@/components/Input/Input";
 import Result from "@/components/Result/Result";
 
+import {isEmptyString} from "@/helpers/isEmptyString";
+import {isValidValue} from "@/helpers/isValidValue";
+
+import {ChangeEvent, useMemo, useState} from "react";
+
 const Home: React.FC = () => {
+	// Constants
+	const MAX_BILL_VALUE = 10000;
+
+	// States
+	const [inputBill, setInputBill] = useState("");
+
+	const [isInputBillInvalid, setIsInputBillInvalid] = useState(false);
+
+	const [bill, setBill] = useState<number | null>(null);
+
+	// Memoized values
+	const inputBillInlineErrorMsg = useMemo(() => {
+		if (!isInputBillInvalid) return "";
+
+		if (!isValidValue(inputBill)) {
+			return "Wrong format";
+		}
+
+		if (+inputBill > MAX_BILL_VALUE) {
+			return "Cannot be greater than $10,000.00";
+		}
+
+		return "Cannot be zero";
+	}, [isInputBillInvalid, inputBill]);
+
+	// Handlers
+	const handleInputBillChange = (
+		event: ChangeEvent<HTMLInputElement>,
+	): void => {
+		const value = event.target.value;
+
+		const invalidConditions =
+			isEmptyString(value) ||
+			!isValidValue(value) ||
+			+value <= 0 ||
+			+value > MAX_BILL_VALUE;
+
+		setInputBill(value);
+
+		setIsInputBillInvalid(invalidConditions);
+
+		setBill(() => {
+			if (invalidConditions) {
+				return null;
+			}
+
+			return +value;
+		});
+	};
+
 	return (
 		<>
 			<Image
@@ -30,14 +85,20 @@ const Home: React.FC = () => {
 							<label htmlFor="bill-input" className={`${styles.label}`}>
 								Bill
 							</label>
-							<InlineError isShown={false} label="Can't be zero" />
+							<InlineError
+								isShown={isInputBillInvalid}
+								label={inputBillInlineErrorMsg}
+							/>
 						</header>
 						<Input
 							autoFocus
-							hasError={false}
+							hasError={isInputBillInvalid}
 							iconPath="/images/icon-dollar.svg"
 							id="bill-input"
+							maxLength={10}
 							placeholder="0"
+							value={inputBill}
+							onChange={handleInputBillChange}
 						/>
 					</div>
 					<div className={`${styles.formField}`}>
