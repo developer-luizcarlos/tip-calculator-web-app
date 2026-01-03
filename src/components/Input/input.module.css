@@ -1,0 +1,36 @@
+.inputWrapper {
+	background-color: hsl(189, 47%, 97%);
+	border-radius: 3px;
+	display: flex;
+	align-items: center;
+	column-gap: 10px;
+	height: clamp(35px, 3vw, 45px);
+	padding-inline: 10px;
+}
+
+.inputWrapper.inputWrapperError {
+	outline: 2px solid red;
+}
+
+.inputWrapper:focus-within {
+	outline: 2px solid hsl(172, 67%, 45%);
+}
+
+.icon {
+	height: clamp(15px, 1.5vw, 18px);
+	width: 18px;
+	object-fit: contain;
+}
+
+.input {
+	background-color: transparent;
+	border: none;
+	outline: none;
+	height: 100%;
+	width: 100%;
+	color: hsl(183, 100%, 15%);
+	text-align: right;
+	font-size: clamp(1.2rem, 2vw, 2.5rem);
+	font-weight: bold;
+	padding-inline: 5px;
+}
