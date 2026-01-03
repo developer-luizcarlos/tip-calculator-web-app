@@ -101,9 +101,21 @@ body {
 }
 
 @media only screen and (hover: hover) {
+	.btnTip:focus {
+		background-color: hsl(185, 41%, 84%);
+		color: hsl(183, 100%, 15%);
+		outline: none;
+	}
+
 	.btnTip:hover {
 		background-color: hsl(185, 41%, 84%);
 		color: hsl(183, 100%, 15%);
+	}
+
+	.btnReset:focus {
+		background-color: hsl(185, 41%, 84%);
+		color: hsl(183, 100%, 15%);
+		outline: none;
 	}
 
 	.btnReset:hover {
