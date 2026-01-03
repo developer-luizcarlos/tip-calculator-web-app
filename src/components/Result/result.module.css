@@ -1,0 +1,27 @@
+.result {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.resultDetails {
+	display: flex;
+	flex-direction: column;
+}
+
+.detailsTitle {
+	color: hsl(0, 100%, 100%);
+	font-size: clamp(15px, 1.2vw, 1.2rem);
+	font-weight: bold;
+}
+
+.detailsDescription {
+	color: hsl(184, 14%, 56%);
+	font-size: clamp(12px, 0.9vw, 1rem);
+}
+
+.resultValue {
+	color: hsl(172, 67%, 45%);
+	font-size: clamp(2rem, 3vw, 3rem);
+	font-weight: 600;
+}
