@@ -76,6 +76,22 @@ const Home: React.FC = () => {
 		return "Cannot be zero";
 	}, [isInputPeopleInvalid, inputPeople]);
 
+	const tipTotal = useMemo(() => {
+		if (percentage && bill) {
+			return (percentage / 100) * bill;
+		}
+
+		return 0;
+	}, [bill, percentage]);
+
+	const tipPerPerson = useMemo(() => {
+		if (tipTotal && people) {
+			return tipTotal / people;
+		}
+
+		return 0;
+	}, [people, tipTotal]);
+
 	// Handlers
 	const handleInputBillChange = (
 		event: ChangeEvent<HTMLInputElement>,
@@ -270,8 +286,12 @@ const Home: React.FC = () => {
 				</form>
 				<aside className={`${styles.dashboard}`}>
 					<header>
-						<Result description="person" title="Tip Amount" value={0} />
-						<Result description="person" title="Total" value={0} />
+						<Result
+							description="person"
+							title="Tip Amount"
+							value={tipPerPerson}
+						/>
+						<Result description="person" title="Total" value={tipTotal} />
 					</header>
 					<button className={`${styles.btn} ${styles.btnReset}`}>
 						RESET
