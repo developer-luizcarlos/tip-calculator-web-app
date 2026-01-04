@@ -12,7 +12,7 @@ import {isEmptyString} from "@/helpers/isEmptyString";
 import {isValidPercentageFormat} from "@/helpers/isValidPercentageFormat";
 import {isValidValue} from "@/helpers/isValidValue";
 
-import {ChangeEvent, useEffect, useMemo, useState} from "react";
+import {ChangeEvent, useMemo, useRef, useState} from "react";
 
 const Home: React.FC = () => {
 	// Constants
@@ -32,6 +32,9 @@ const Home: React.FC = () => {
 	const [bill, setBill] = useState<number | null>(null);
 	const [percentage, setPercentage] = useState<number | null>(null);
 	const [people, setPeople] = useState<number | null>(null);
+
+	// Refs
+	const inputBillRef = useRef<HTMLInputElement>(null);
 
 	// Memoized values
 	const inputBillInlineErrorMsg = useMemo(() => {
@@ -177,6 +180,22 @@ const Home: React.FC = () => {
 		setInputPercentage("");
 	};
 
+	const handleBtnResetClick = (): void => {
+		setInputBill("");
+		setInputPercentage("");
+		setInputPeople("");
+
+		setIsInputBillInvalid(false);
+		setIsInputPeopleInvalid(false);
+		setIsPercentageInvalid(false);
+
+		setBill(null);
+		setPercentage(null);
+		setPeople(null);
+
+		inputBillRef.current!.focus();
+	};
+
 	return (
 		<>
 			<Image
@@ -209,6 +228,7 @@ const Home: React.FC = () => {
 							iconPath="/images/icon-dollar.svg"
 							id="bill-input"
 							maxLength={10}
+							ref={inputBillRef}
 							placeholder="0"
 							value={inputBill}
 							onChange={handleInputBillChange}
@@ -300,6 +320,7 @@ const Home: React.FC = () => {
 					<button
 						disabled={isBtnResetDisabled}
 						className={`${styles.btn} ${styles.btnReset}`}
+						onClick={handleBtnResetClick}
 					>
 						RESET
 					</button>
