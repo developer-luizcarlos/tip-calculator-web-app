@@ -81,6 +81,11 @@ body {
 	color: hsl(183, 100%, 15%);
 }
 
+.btnReset:disabled {
+	background-color: hsl(186, 14%, 43%);
+	cursor: not-allowed;
+}
+
 .dashboard {
 	background-color: hsl(183, 100%, 15%);
 	border-radius: 10px;
@@ -112,13 +117,13 @@ body {
 		color: hsl(183, 100%, 15%);
 	}
 
-	.btnReset:focus {
+	.btnReset:focus:not(:disabled) {
 		background-color: hsl(185, 41%, 84%);
 		color: hsl(183, 100%, 15%);
 		outline: none;
 	}
 
-	.btnReset:hover {
+	.btnReset:hover:not(:disabled) {
 		background-color: hsl(185, 41%, 84%);
 		color: hsl(183, 100%, 15%);
 	}

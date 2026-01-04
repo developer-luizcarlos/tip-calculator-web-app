@@ -92,6 +92,10 @@ const Home: React.FC = () => {
 		return 0;
 	}, [people, tipTotal]);
 
+	const isBtnResetDisabled = useMemo(() => {
+		return !bill && !percentage && !people;
+	}, [bill, percentage, people]);
+
 	// Handlers
 	const handleInputBillChange = (
 		event: ChangeEvent<HTMLInputElement>,
@@ -293,7 +297,10 @@ const Home: React.FC = () => {
 						/>
 						<Result description="person" title="Total" value={tipTotal} />
 					</header>
-					<button className={`${styles.btn} ${styles.btnReset}`}>
+					<button
+						disabled={isBtnResetDisabled}
+						className={`${styles.btn} ${styles.btnReset}`}
+					>
 						RESET
 					</button>
 				</aside>
