@@ -35,6 +35,7 @@ const Home: React.FC = () => {
 
 	// Refs
 	const inputBillRef = useRef<HTMLInputElement>(null);
+	const inputPeopleRef = useRef<HTMLInputElement>(null);
 
 	// Memoized values
 	const inputBillInlineErrorMsg = useMemo(() => {
@@ -178,6 +179,8 @@ const Home: React.FC = () => {
 		setIsPercentageInvalid(false);
 
 		setInputPercentage("");
+
+		inputPeopleRef.current!.focus();
 	};
 
 	const handleBtnResetClick = (): void => {
@@ -303,6 +306,7 @@ const Home: React.FC = () => {
 							iconPath="/images/icon-person.svg"
 							id="people-input"
 							value={inputPeople}
+							ref={inputPeopleRef}
 							placeholder="0"
 							onChange={handleInputPeopleChange}
 						/>
