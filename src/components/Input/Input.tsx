@@ -2,14 +2,20 @@ import styles from "./input.module.css";
 
 import Image from "next/image.js";
 
-import {InputHTMLAttributes} from "react";
+import {InputHTMLAttributes, RefObject} from "react";
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 	hasError: boolean;
 	iconPath?: string;
+	ref?: RefObject<HTMLInputElement | null>;
 }
 
-const Input: React.FC<InputProps> = ({hasError, iconPath, ...rest}) => {
+const Input: React.FC<InputProps> = ({
+	hasError,
+	iconPath,
+	ref,
+	...rest
+}) => {
 	return (
 		<div
 			className={`${styles.inputWrapper} ${hasError && styles.inputWrapperError}`}
@@ -23,7 +29,7 @@ const Input: React.FC<InputProps> = ({hasError, iconPath, ...rest}) => {
 					className={`${styles.icon}`}
 				/>
 			)}
-			<input {...rest} className={`${styles.input}`} />
+			<input {...rest} ref={ref} className={`${styles.input}`} />
 		</div>
 	);
 };
