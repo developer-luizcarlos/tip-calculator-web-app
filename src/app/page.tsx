@@ -8,6 +8,7 @@ import InlineError from "@/components/InlineError/InlineError";
 import Input from "@/components/Input/Input";
 import Result from "@/components/Result/Result";
 
+import {formatToCurrency} from "@/helpers/formatToCurrency";
 import {isEmptyString} from "@/helpers/isEmptyString";
 import {isValidPercentageFormat} from "@/helpers/isValidPercentageFormat";
 import {isValidValue} from "@/helpers/isValidValue";
@@ -46,7 +47,7 @@ const Home: React.FC = () => {
 		}
 
 		if (+inputBill > MAX_BILL_VALUE) {
-			return "Cannot be greater than $10,000.00";
+			return `Cannot be greater than ${formatToCurrency(MAX_BILL_VALUE)}`;
 		}
 
 		return "Cannot be zero";
