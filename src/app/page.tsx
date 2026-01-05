@@ -1,5 +1,10 @@
 "use client";
 
+// Icons importation
+import iconBill from "../../images/icon-dollar.svg";
+import iconPerson from "../../images/icon-person.svg";
+import iconLogo from "../../images/logo.svg";
+
 import styles from "./page.module.css";
 
 import Image from "next/image.js";
@@ -203,7 +208,7 @@ const Home: React.FC = () => {
 	return (
 		<>
 			<Image
-				src={"/images/logo.svg"}
+				src={iconLogo}
 				alt="splitter's logo"
 				height={0}
 				width={0}
@@ -229,7 +234,7 @@ const Home: React.FC = () => {
 						<Input
 							autoFocus
 							hasError={isInputBillInvalid}
-							iconPath="/images/icon-dollar.svg"
+							iconPath={iconBill}
 							id="bill-input"
 							maxLength={10}
 							ref={inputBillRef}
@@ -304,7 +309,7 @@ const Home: React.FC = () => {
 						</header>
 						<Input
 							hasError={isInputPeopleInvalid}
-							iconPath="/images/icon-person.svg"
+							iconPath={iconPerson}
 							id="people-input"
 							value={inputPeople}
 							ref={inputPeopleRef}
