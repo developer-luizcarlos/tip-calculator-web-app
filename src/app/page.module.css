@@ -1,153 +1,153 @@
 body {
-  background-color: hsl(185, 41%, 84%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  row-gap: 50px;
+	background-color: hsl(185, 41%, 84%);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	row-gap: 50px;
 }
 
 .logo {
-  height: auto;
-  width: auto;
+	height: auto;
+	width: auto;
 }
 
 .calculator {
-  background-color: hsl(0, 100%, 100%);
-  border-radius: 15px;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 35px;
-  width: clamp(350px, 80vw, 1000px);
-  padding: 2rem;
+	background-color: hsl(0, 100%, 100%);
+	border-radius: 15px;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 35px;
+	width: clamp(350px, 80vw, 1000px);
+	padding: 2rem;
 }
 
 .form {
-  display: grid;
-  row-gap: 35px;
+	display: grid;
+	row-gap: 35px;
 }
 
 .formField {
-  display: flex;
-  flex-direction: column;
-  row-gap: 5px;
+	display: flex;
+	flex-direction: column;
+	row-gap: 5px;
 }
 
 .formFieldHeader {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 }
 
 .label {
-  color: hsl(183, 100%, 15%);
-  font-size: clamp(1rem, 1.2vw, 1.3rem);
-  font-weight: bold;
+	color: hsl(183, 100%, 15%);
+	font-size: clamp(1rem, 1.2vw, 1.3rem);
+	font-weight: bold;
 }
 
 .btnSelectTipContainer {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  align-items: center;
-  gap: 10px;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-rows: repeat(2, 1fr);
+	align-items: center;
+	gap: 10px;
 }
 
 .btn {
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: inherit;
-  font-size: clamp(1.2rem, 1.8vw, 1.5rem);
-  font-weight: bold;
-  padding: 0.7rem;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-family: inherit;
+	font-size: clamp(1.2rem, 1.8vw, 1.5rem);
+	font-weight: bold;
+	padding: 0.7rem;
 }
 
 .btnPercentage {
-  background-color: hsl(183, 100%, 15%);
-  color: hsl(0, 100%, 100%);
+	background-color: hsl(183, 100%, 15%);
+	color: hsl(0, 100%, 100%);
 }
 
 .btnPercentage.btnSelected {
-  background-color: hsl(172, 67%, 45%);
-  color: hsl(183, 100%, 15%);
+	background-color: hsl(172, 67%, 45%);
+	color: hsl(183, 100%, 15%);
 }
 
 .btnReset {
-  background-color: hsl(172, 67%, 45%);
-  color: hsl(183, 100%, 15%);
+	background-color: hsl(172, 67%, 45%);
+	color: hsl(183, 100%, 15%);
 }
 
 .btnReset:disabled {
-  background-color: hsl(186, 14%, 43%);
-  cursor: not-allowed;
+	background-color: hsl(186, 14%, 43%);
+	cursor: not-allowed;
 }
 
 .dashboard {
-  background-color: hsl(183, 100%, 15%);
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 2rem;
+	background-color: hsl(183, 100%, 15%);
+	border-radius: 10px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	padding: 2rem;
 }
 
 @media only screen and (prefers-reduced-motion: no-preference) {
-  .btn {
-    transition: background-color 0.3s cubic-bezier(0.17, 0.84, 0.44, 1);
-  }
+	.btn {
+		transition: background-color 0.3s cubic-bezier(0.17, 0.84, 0.44, 1);
+	}
 }
 
 @media only screen and (hover: hover) {
-  .btnPercentage:focus {
-    background-color: hsl(185, 41%, 84%);
-    color: hsl(183, 100%, 15%);
-    outline: none;
-  }
+	.btnPercentage:focus {
+		background-color: hsl(185, 41%, 84%);
+		color: hsl(183, 100%, 15%);
+		outline: none;
+	}
 
-  .btnPercentage:hover {
-    background-color: hsl(185, 41%, 84%);
-    color: hsl(183, 100%, 15%);
-  }
+	.btnPercentage:hover {
+		background-color: hsl(185, 41%, 84%);
+		color: hsl(183, 100%, 15%);
+	}
 
-  .btnReset:focus:not(:disabled) {
-    background-color: hsl(185, 41%, 84%);
-    color: hsl(183, 100%, 15%);
-    outline: none;
-  }
+	.btnReset:focus:not(:disabled) {
+		background-color: hsl(185, 41%, 84%);
+		color: hsl(183, 100%, 15%);
+		outline: none;
+	}
 
-  .btnReset:hover:not(:disabled) {
-    background-color: hsl(185, 41%, 84%);
-    color: hsl(183, 100%, 15%);
-  }
+	.btnReset:hover:not(:disabled) {
+		background-color: hsl(185, 41%, 84%);
+		color: hsl(183, 100%, 15%);
+	}
 }
 
 @media only screen and (width <=890px) {
-  body {
-    justify-content: flex-start;
-    gap: 35px;
-    padding-top: 2rem;
-  }
+	body {
+		justify-content: flex-start;
+		gap: 35px;
+		padding-top: 2rem;
+	}
 
-  .calculator {
-    grid-template-columns: 1fr;
-  }
+	.calculator {
+		grid-template-columns: 1fr;
+	}
 
-  .btnSelectTipContainer {
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-  }
+	.btnSelectTipContainer {
+		grid-template-columns: repeat(2, 1fr);
+		grid-template-rows: repeat(3, 1fr);
+	}
 
-  .dashboard {
-    gap: 30px;
-  }
+	.dashboard {
+		gap: 30px;
+	}
 }
 
 @media only screen and (width <=500px) {
-  .calculator {
-    width: 100%;
-  }
+	.calculator {
+		width: 100%;
+	}
 }
