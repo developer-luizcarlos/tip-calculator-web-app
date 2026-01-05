@@ -203,7 +203,7 @@ const Home: React.FC = () => {
 	return (
 		<>
 			<Image
-				src={"/images/logo.svg"}
+				src={"images/logo.svg"}
 				alt="splitter's logo"
 				height={0}
 				width={0}
@@ -229,7 +229,7 @@ const Home: React.FC = () => {
 						<Input
 							autoFocus
 							hasError={isInputBillInvalid}
-							iconPath="/images/icon-dollar.svg"
+							iconPath="images/icon-dollar.svg"
 							id="bill-input"
 							maxLength={10}
 							ref={inputBillRef}
@@ -304,7 +304,7 @@ const Home: React.FC = () => {
 						</header>
 						<Input
 							hasError={isInputPeopleInvalid}
-							iconPath="/images/icon-person.svg"
+							iconPath="images/icon-person.svg"
 							id="people-input"
 							value={inputPeople}
 							ref={inputPeopleRef}
