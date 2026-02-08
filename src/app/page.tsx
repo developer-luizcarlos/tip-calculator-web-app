@@ -41,6 +41,7 @@ const Home: React.FC = () => {
 
   // Refs
   const inputBillRef = useRef<HTMLInputElement>(null);
+  const inputPercentageRef = useRef<HTMLInputElement>(null);
   const inputPeopleRef = useRef<HTMLInputElement>(null);
 
   // Memoized values
@@ -205,9 +206,57 @@ const Home: React.FC = () => {
     inputBillRef.current!.focus();
   };
 
+  const handleInputBillKeydown = (
+    event: React.KeyboardEvent<HTMLInputElement>,
+  ): void => {
+    if (event.key === "Enter") {
+      goToNextInput(event.target as HTMLInputElement);
+    }
+  };
+
+  const handleInputPercentageKeydown = (
+    event: React.KeyboardEvent<HTMLInputElement>,
+  ): void => {
+    if (event.key === "Enter") {
+      goToNextInput(event.target as HTMLInputElement);
+    }
+  };
+
+  const handleInputPeopleKeydown = (
+    event: React.KeyboardEvent<HTMLInputElement>,
+  ): void => {
+    if (event.key === "Enter") {
+      goToNextInput(event.target as HTMLInputElement);
+    }
+  };
+
   // Helpers
   const isPercentageBtnSelected = (btnValue: number): boolean => {
     return percentage === btnValue && inputPercentage === "";
+  };
+
+  const goToNextInput = (currentInput: HTMLInputElement): void => {
+    const availableInputs = [
+      { id: "bill-input", ref: inputBillRef },
+      { id: "percentage-input", ref: inputPercentageRef },
+      { id: "people-input", ref: inputPeopleRef },
+    ];
+
+    const currentIndex = availableInputs.findIndex((obj) => {
+      return obj.id === currentInput.id;
+    });
+
+    const nextInputIndex = availableInputs.findIndex((_, index) => {
+      return index > currentIndex;
+    });
+
+    const checkNextInputExists = nextInputIndex !== -1;
+
+    if (!checkNextInputExists) {
+      availableInputs[0].ref.current?.focus();
+    } else {
+      availableInputs[nextInputIndex].ref.current?.focus();
+    }
   };
 
   return (
@@ -248,6 +297,7 @@ const Home: React.FC = () => {
               placeholder="0"
               value={inputBill}
               onChange={handleInputBillChange}
+              onKeyDown={handleInputBillKeydown}
             />
           </div>
           <div className={`${styles.formField}`}>
@@ -309,7 +359,9 @@ const Home: React.FC = () => {
                 maxLength={3}
                 placeholder="0"
                 value={inputPercentage}
+                ref={inputPercentageRef}
                 onChange={handleInputPercentageChange}
+                onKeyDown={handleInputPercentageKeydown}
               />
             </div>
           </div>
@@ -333,6 +385,7 @@ const Home: React.FC = () => {
               ref={inputPeopleRef}
               placeholder="0"
               onChange={handleInputPeopleChange}
+              onKeyDown={handleInputPeopleKeydown}
             />
           </div>
         </form>
