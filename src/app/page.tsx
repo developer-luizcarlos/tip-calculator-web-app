@@ -205,6 +205,11 @@ const Home: React.FC = () => {
     inputBillRef.current!.focus();
   };
 
+  // Helpers
+  const isPercentageBtnSelected = (btnValue: number): boolean => {
+    return percentage === btnValue && inputPercentage === "";
+  };
+
   return (
     <>
       <Image
@@ -256,35 +261,40 @@ const Home: React.FC = () => {
             <div className={`${styles.btnSelectTipContainer}`}>
               <button
                 type="button"
-                className={`${styles.btn} ${styles.btnPercentage} ${percentage === 5 && inputPercentage === "" && styles.btnSelected}`}
+                aria-current={isPercentageBtnSelected(5)}
+                className={`${styles.btn} ${styles.btnPercentage} ${isPercentageBtnSelected(5) && styles.btnSelected}`}
                 onClick={() => handleBtnPercentageClick(5)}
               >
                 5%
               </button>
               <button
                 type="button"
-                className={`${styles.btn} ${styles.btnPercentage} ${percentage === 10 && inputPercentage === "" && styles.btnSelected}`}
+                aria-current={isPercentageBtnSelected(10)}
+                className={`${styles.btn} ${styles.btnPercentage} ${isPercentageBtnSelected(10) && styles.btnSelected}`}
                 onClick={() => handleBtnPercentageClick(10)}
               >
                 10%
               </button>
               <button
                 type="button"
-                className={`${styles.btn} ${styles.btnPercentage} ${percentage === 15 && inputPercentage === "" && styles.btnSelected}`}
+                aria-current={isPercentageBtnSelected(15)}
+                className={`${styles.btn} ${styles.btnPercentage} ${isPercentageBtnSelected(15) && styles.btnSelected}`}
                 onClick={() => handleBtnPercentageClick(15)}
               >
                 15%
               </button>
               <button
                 type="button"
-                className={`${styles.btn} ${styles.btnPercentage} ${percentage === 25 && inputPercentage === "" && styles.btnSelected}`}
+                aria-current={isPercentageBtnSelected(25)}
+                className={`${styles.btn} ${styles.btnPercentage} ${isPercentageBtnSelected(25) && styles.btnSelected}`}
                 onClick={() => handleBtnPercentageClick(25)}
               >
                 25%
               </button>
               <button
                 type="button"
-                className={`${styles.btn} ${styles.btnPercentage} ${percentage === 50 && inputPercentage === "" && styles.btnSelected}`}
+                aria-current={isPercentageBtnSelected(50)}
+                className={`${styles.btn} ${styles.btnPercentage} ${isPercentageBtnSelected(50) && styles.btnSelected}`}
                 onClick={() => handleBtnPercentageClick(50)}
               >
                 50%
