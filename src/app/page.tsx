@@ -251,7 +251,7 @@ const Home: React.FC = () => {
           <div className={`${styles.formField}`}>
             <header className={`${styles.formFieldHeader}`}>
               <label htmlFor="percentage-input" className={`${styles.label}`}>
-                Select Tip %
+                Select Tip <span aria-hidden="true">%</span>
               </label>
               <InlineError
                 isShown={isPercentageInvalid}
