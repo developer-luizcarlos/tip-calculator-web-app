@@ -392,14 +392,14 @@ const Home: React.FC = () => {
           </div>
         </form>
         <aside className={`${styles.dashboard}`}>
-          <header>
+          <dl>
             <Result
               description="person"
               title="Tip Amount"
               value={tipPerPerson}
             />
             <Result description="person" title="Total" value={tipTotal} />
-          </header>
+          </dl>
           <button
             disabled={isBtnResetDisabled}
             className={`${styles.btn} ${styles.btnReset}`}
