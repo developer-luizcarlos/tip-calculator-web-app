@@ -13,6 +13,7 @@ const InlineError: React.FC<InlineErrorProps> = ({
   return (
     <p
       aria-live="polite"
+      aria-hidden={!isShown ? "true" : "false"}
       className={`${styles.inlineError} ${!isShown && styles.inlineErrorHidden}`}
       {...rest}
     >
