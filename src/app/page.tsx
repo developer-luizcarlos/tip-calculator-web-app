@@ -187,7 +187,9 @@ const Home: React.FC = () => {
 
     setInputPercentage("");
 
-    inputPeopleRef.current!.focus();
+    if (inputPeople === "") {
+      inputPeopleRef.current!.focus();
+    }
   };
 
   const handleBtnResetClick = (): void => {
