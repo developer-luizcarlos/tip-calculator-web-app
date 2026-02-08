@@ -232,11 +232,13 @@ const Home: React.FC = () => {
                 Bill
               </label>
               <InlineError
+                id="bill-inline-error"
                 isShown={isInputBillInvalid}
                 label={inputBillInlineErrorMsg}
               />
             </header>
             <Input
+              aria-describedby="bill-inline-error"
               autoFocus
               hasError={isInputBillInvalid}
               iconPath={iconBill}
@@ -254,6 +256,7 @@ const Home: React.FC = () => {
                 Select Tip <span aria-hidden="true">%</span>
               </label>
               <InlineError
+                id="percentage-inline-error"
                 isShown={isPercentageInvalid}
                 label={percentageInlineErrorMsg}
               />
@@ -300,6 +303,7 @@ const Home: React.FC = () => {
                 50%
               </button>
               <Input
+                aria-describedby="percentage-inline-error"
                 hasError={isPercentageInvalid}
                 id="percentage-input"
                 maxLength={3}
@@ -315,11 +319,13 @@ const Home: React.FC = () => {
                 Number of People
               </label>
               <InlineError
+                id="people-inline-error"
                 isShown={isInputPeopleInvalid}
                 label={peopleInlineErrorMsg}
               />
             </header>
             <Input
+              aria-describedby="people-inline-error"
               hasError={isInputPeopleInvalid}
               iconPath={iconPerson}
               id="people-input"
