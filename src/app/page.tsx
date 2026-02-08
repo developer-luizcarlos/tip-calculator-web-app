@@ -255,30 +255,35 @@ const Home: React.FC = () => {
             </header>
             <div className={`${styles.btnSelectTipContainer}`}>
               <button
+                type="button"
                 className={`${styles.btn} ${styles.btnPercentage} ${percentage === 5 && inputPercentage === "" && styles.btnSelected}`}
                 onClick={() => handleBtnPercentageClick(5)}
               >
                 5%
               </button>
               <button
+                type="button"
                 className={`${styles.btn} ${styles.btnPercentage} ${percentage === 10 && inputPercentage === "" && styles.btnSelected}`}
                 onClick={() => handleBtnPercentageClick(10)}
               >
                 10%
               </button>
               <button
+                type="button"
                 className={`${styles.btn} ${styles.btnPercentage} ${percentage === 15 && inputPercentage === "" && styles.btnSelected}`}
                 onClick={() => handleBtnPercentageClick(15)}
               >
                 15%
               </button>
               <button
+                type="button"
                 className={`${styles.btn} ${styles.btnPercentage} ${percentage === 25 && inputPercentage === "" && styles.btnSelected}`}
                 onClick={() => handleBtnPercentageClick(25)}
               >
                 25%
               </button>
               <button
+                type="button"
                 className={`${styles.btn} ${styles.btnPercentage} ${percentage === 50 && inputPercentage === "" && styles.btnSelected}`}
                 onClick={() => handleBtnPercentageClick(50)}
               >
